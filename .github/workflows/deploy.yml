@@ -15,6 +15,9 @@ jobs:
 
 
     steps:
+    - name: Fix permissions for Vite binary
+      run: chmod +x ./node_modules/.bin/vite
+      
     - name: Set file permissions
       run: chmod -R 755 ./ 
 
