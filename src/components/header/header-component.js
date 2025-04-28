@@ -96,7 +96,7 @@ export class HeaderComponent extends LitElement {
                     <div class="create-search-container">
                       <!-- Créer -->
                       <div class="create-content">
-                        <span class="create-text">Créer</span>
+                        <span class="create-text">Créer une carte</span>
                         <button
                           class="create-button"
                           @click="${this.handleCreateClick}"
