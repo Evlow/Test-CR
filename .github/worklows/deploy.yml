@@ -33,6 +33,6 @@ name: Build project
 name: Deploy to GitHub Pages
     uses: peaceiris/actions-gh-pages@v3
     with:
-      deploy_key: ${{ secrets.DEPLOY_KEY }}  # Store your deploy SSH key in secrets
-      branch: prod  # Target the prod branch
-      folder: build  # Path to the build folder (e.g., "build" for React)
+      deploy_key: ${{ secrets.DEPLOY_KEY }}  
+      branch: prod 
+      folder: build  
