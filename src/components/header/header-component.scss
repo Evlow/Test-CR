@@ -1,10 +1,10 @@
-
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   width: 100vw;
+  position: relative;
 }
 
 .left,
@@ -13,9 +13,34 @@ header {
   align-items: center;
 }
 
-.left {
-  flex-direction: column;
+.top-left {
+  position: relative;
 }
+
+/* Container principal qui apparaît au clic */
+.home-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  border-bottom: 1px solid #c3d1e1;
+  padding: 12px 12px 0 12px;
+  z-index: 100;
+}
+
+.home-container.show {
+  display: block; /* Changé en block pour permettre un layout vertical approprié */
+}
+
+/* Container flex pour Créer et Rechercher */
+.create-search-container {
+  display: flex;
+  gap: 16px; /* Espacement entre Créer et Rechercher */
+  height: 78px;
+}
+
 .icon-button {
   display: flex;
   align-items: center;
@@ -23,6 +48,11 @@ header {
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+.icon-button.active {
+  background-color: white;
+  border-radius: 4px;
 }
 
 .icon {
@@ -36,40 +66,79 @@ header {
   height: 40px;
 }
 
-.spacer {
+.spacer-icon {
   width: 1px;
-  height: 28px;
+  height: 40px;
 }
 
-.spacer:last-child {
-  display: none;
+.spacer-icon-top-bar {
+  width: 1px;
+  height: 78px;
 }
 
 .create-button {
-  position: absolute;
-  top: 30px;
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: transparent;
-  width: 78px;
+  padding: 4px 0;
 }
 
-.create-icon {
-  padding: 8px 24px 16px 24px;
+.create-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px; 
+  gap: 4px;
 }
 
 .create-text {
   font-size: 14px;
-  margin-bottom: 5px; /* Espace entre le texte et l'icône */
+  margin-bottom: 4px;
 }
 
-.create-icon img {
-  width: 30px; 
+.create-icon-img {
+  width: 30px;
+  height: 30px;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar > div {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.search-bar input {
+  padding: 6px 8px;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid #a3b1c2;
+  border-right: none;
+  font-style: italic;
+  width: 190px;
+}
+
+.search-button {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1565c0;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.top-bar {
+  width: 100%;
+  border-top: 1px solid #c3d1e1;
 }

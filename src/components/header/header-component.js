@@ -68,46 +68,93 @@ export class HeaderComponent extends LitElement {
 
   render() {
     return html`
-      <header>
-        <!-- Partie gauche de header  -->
+     <header>
         <div class="left">
-          ${this.icons
-        .filter((icon) => icon.position === "left")
-        .map(
-          (icon) => html`
-                <button class="icon-button" @click="${this.handleHomeClick}">
-                  <img
-                    src="${icon.path}"
-                    alt="${icon.alt}"
-                    class="${icon.className}"
-                  />
-                </button>
-                <!-- Affichage conditionnel du bouton "Créer" si l'icône est 'home' -->
-                ${this.showCreateButton && icon.name === "home"
-              ? html`
-                      <button class="create-button" @click="${this.handleCreateClick}">
-                        <div class="create-icon">
-                          <span class="create-text">Créer</span>
+          <div class="top-left">
+            ${this.icons
+              .filter((icon) => icon.position === "left")
+              .map(
+                (icon) => html`
+                  <button 
+                    class="icon-button ${this.showCreateButton ? 'active' : ''}"
+                    @click="${this.handleHomeClick}"
+                  >
+                    <img
+                      src="${icon.path}"
+                      alt="${icon.alt}"
+                      class="${icon.className}"
+                    />
+                  </button>
+                `
+              )}
+            
+            <!-- Container principal avec classe conditionnelle -->
+            <div class="home-container ${this.showCreateButton ? "show" : ""}">
+              ${this.showCreateButton
+                ? html`
+                    <!-- Container pour Créer et Rechercher côte à côte -->
+                    <div class="create-search-container">
+                      <!-- Créer -->
+                      <div class="create-content">
+                        <span class="create-text">Créer</span>
+                        <button
+                          class="create-button"
+                          @click="${this.handleCreateClick}"
+                        >
                           <img
                             src="/assets/button.svg"
                             alt="icone créer"
-                            class="create-icon"
+                            class="create-icon-img"
                           />
+                        </button>
+                      </div>
+                      
+                      <!-- Séparateur -->
+                      <img
+                        src="/assets/spacers.svg"
+                        alt="spacer"
+                        class="spacer-icon-top-bar"
+                      />
+                      
+                      <!-- Rechercher -->
+                      <div class="search-bar">
+                        <span class="create-text">Rechercher</span>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Nom d'une ressource"
+                            @input="${this.handleSearchInput}"
+                          />
+                          <button
+                            class="search-button"
+                            @click="${this.handleSearchClick}"
+                          >
+                            <img
+                              src="/assets/search.svg"
+                              alt="icone recherche"
+                              class="search-icon"
+                            />
+                          </button>
                         </div>
-                      </button>
-                    `
-              : ""}
-              `
-        )}
-        
+                      </div>
+                    </div>
+                    
+                    <!-- Barre Top en dessous -->
+                    <div class="top-bar">
+                      <span class="create-text">Top</span>
+                    </div>
+                  `
+                : ""}
+            </div>
+          </div>
         </div>
 
-        <!-- Partie droite de header -->
+        <!-- Partie droite du header -->
         <div class="right">
           ${this.icons
-        .filter((icon) => icon.position === "right")
-        .map(
-          (icon, index, array) => html`
+            .filter((icon) => icon.position === "right")
+            .map(
+              (icon, index, array) => html`
                 <img
                   src="${icon.path}"
                   alt="${icon.alt}"
@@ -115,16 +162,16 @@ export class HeaderComponent extends LitElement {
                 />
                 <!-- Ajout d'un séparateur après certaines icônes -->
                 ${index < array.length - 2
-              ? html`
+                  ? html`
                       <img
                         src="/assets/spacers.svg"
                         alt="spacer"
                         class="spacer-icon"
                       />
                     `
-              : ""}
+                  : ""}
               `
-        )}
+            )}
         </div>
       </header>
     `;
