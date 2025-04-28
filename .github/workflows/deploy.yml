@@ -1,5 +1,9 @@
 name: Deploy to GitHub Pages
 
+permissions:
+  contents: read
+  packages: write
+
 on:
   push:
     branches:
@@ -8,15 +12,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-        contents: read
-        packages: write
+
 
     steps:
+    - name: Set file permissions
+      run: chmod -R 755 ./ 
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    
     - name: Set up Node.js 
       uses: actions/setup-node@v2
       with:
@@ -27,7 +31,7 @@ jobs:
 
     
     - name: Build project
-      run: npm run build t
+      run: npm run build
 
     
     - name: Deploy to GitHub Pages
