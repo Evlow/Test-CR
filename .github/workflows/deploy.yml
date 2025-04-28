@@ -7,39 +7,30 @@ permissions:
 on:
   push:
     branches:
-      - main  # Trigger when changes are pushed to the main branch
+      - main  # Déclenchement du workflow lorsqu'il y a des changements sur la branche 'main'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-
     steps:
-    - name: Fix permissions for Vite binary
-      run: chmod +x ./node_modules/.bin/vite
-      
-    - name: Set file permissions
-      run: chmod -R 755 ./ 
-
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Node.js 
       uses: actions/setup-node@v2
       with:
-        node-version: '20'  
+        node-version: '20' 
 
     - name: Install dependencies
       run: npm install
 
-    
     - name: Build project
-      run: ./node_modules/.bin/vite build
+      run: npm run build  
 
-    
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}  
-        branch: prod 
-        folder: build  
+        branch: prod  
+        folder: dist  
