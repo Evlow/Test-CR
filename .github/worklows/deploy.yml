@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      
+main  # Trigger when changes are pushed to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+name: Checkout repository
+    uses: actions/checkout@v2
+
+    
+name: Set up Node.js (for React, Angular, etc.)
+    uses: actions/setup-node@v2
+    with:
+      node-version: '20'  
+
+    
+name: Install dependencies
+    run: npm install
+
+    
+name: Build project
+    run: npm run build t
+
+    
+name: Deploy to GitHub Pages
+    uses: peaceiris/actions-gh-pages@v3
+    with:
+      deploy_key: ${{ secrets.DEPLOY_KEY }}  # Store your deploy SSH key in secrets
+      branch: prod  # Target the prod branch
+      folder: build  # Path to the build folder (e.g., "build" for React)
