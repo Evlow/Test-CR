@@ -6,7 +6,7 @@ class ItemCard extends LitElement {
 
   static properties = {
     userName: { type: String },
-    title: { type: String },
+    name: { type: String },
     description: { type: String },
     photoUrl: { type: String },
     edit: { type: Object },
@@ -15,7 +15,7 @@ class ItemCard extends LitElement {
   constructor() {
     super();
     this.userName = "Nom d'utilisateur";
-    this.title = "Titre de la carte";
+    this.name = "Titre de la carte";
     this.description = "Description de la carte";
     this.photoUrl = "/assets/picture.webp";
     this.edit = new Date();
@@ -41,8 +41,8 @@ class ItemCard extends LitElement {
       <div class="card-container">
         <div class="card">
           <div class="content">
-            <img src="${this.photoUrl}" alt="${this.title}" />
-            <div class="title">${this.title}</div>
+            <img src="${this.photoUrl}" alt="${this.name}" />
+            <div class="title">${this.name}</div>
             <div class="description">${this.description}</div>
             <div class="edit">Modifier le ${formattedDate}</div>
 

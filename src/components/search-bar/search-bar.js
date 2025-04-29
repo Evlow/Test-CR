@@ -3,17 +3,24 @@ import styles from './search-bar.scss' assert { type: 'css' };
 export class SearchBar extends LitElement {
   static styles = styles
 
-  // Méthode pour gérer l'input de recherche
   handleSearchInput(event) {
     const query = event.target.value;
-    this.dispatchEvent(new CustomEvent('search-input', { detail: { query } }));
+    this.dispatchEvent(new CustomEvent('search-input', {
+      detail: { query },
+      bubbles: true,
+      composed: true
+    }));
   }
-
-  // Méthode pour gérer le clic sur le bouton de recherche
+  
   handleSearchClick() {
     const query = this.shadowRoot.querySelector('input').value;
-    this.dispatchEvent(new CustomEvent('search-click', { detail: { query } }));
-  } 
+    this.dispatchEvent(new CustomEvent('search-click', {
+      detail: { query },
+      bubbles: true,
+      composed: true
+    }));
+  }
+  
   render() {
     return html`
       <div class="search-bar">

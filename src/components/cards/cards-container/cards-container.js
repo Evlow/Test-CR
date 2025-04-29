@@ -31,7 +31,7 @@ export class CardsContainer extends LitElement {
     } else {
       this.filteredCards = this.cards.filter(
         (card) =>
-          card.title.toLowerCase().includes(query) ||
+          card.name.toLowerCase().includes(query) ||
           card.description.toLowerCase().includes(query)
       );
     }
@@ -51,29 +51,40 @@ export class CardsContainer extends LitElement {
 
   render() {
     return html`
-      <div class="cards-container">
+      <div class="cards-container" role="region" aria-label="Liste des cartes de villes">
         ${this.filteredCards.length > 0
           ? html`
-              <div class="cards-container__list">
+              <div
+                class="cards-container__list"
+                role="list"
+                aria-live="polite"
+                aria-relevant="additions removals"
+              >
                 ${this.filteredCards.map(
                   (card) => html`
                     <item-card
-                      .title="${card.title}"
+                      .name="${card.name}"
                       .description="${card.description}"
                       .photoUrl="${card.photoUrl}"
+                      role="listitem"
+                      aria-label="${card.name}: ${card.description}"
                     ></item-card>
                   `
                 )}
               </div>
             `
           : html`
-              <p class="cards-container__empty-message">
+              <p
+                class="cards-container__empty-message"
+                role="status"
+                aria-live="polite"
+              >
                 Aucune carte disponible.
               </p>
             `}
       </div>
     `;
   }
+  
 }
-
 customElements.define('cards-container', CardsContainer);
