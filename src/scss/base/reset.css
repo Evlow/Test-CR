@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* Importer le fichier des variables */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 /* Réinitialisation des marges et des paddings */
 *,
@@ -67,4 +68,4 @@ body {
 /* Définir des marges pour certaines sections globales */
 main {
   display: block;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=reset.css.map */
