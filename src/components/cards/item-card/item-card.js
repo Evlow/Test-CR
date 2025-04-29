@@ -65,7 +65,7 @@ class ItemCard extends LitElement {
             <p class="description">${this.description}</p>
             <div class="meta">
               <div class="meta-labels">
-                <span>Modifier le</span>
+                <span>Modifié le</span>
                 <span>Application</span>
               </div>
               <div class="meta-values">
