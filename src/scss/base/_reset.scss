@@ -19,33 +19,18 @@ body {
   font-weight: $font-weight-500;
 }
 
-/* Réinitialisation des éléments de liste */
-ol,
-ul {
-  list-style: none; /* Supprimer les puces ou numéros par défaut */
-}
-
 /* Réinitialisation des images et des vidéos */
 img,
 picture,
-video,
-canvas,
 svg {
   display: block; /* Supprimer l'espace blanc sous les images */
   max-width: 100%; /* Rendre les images responsive */
   height: auto; /* Garder les proportions des images */
 }
 
-/* Réinitialisation des liens */
-a {
-  text-decoration: none; /* Supprimer la sous-ligne des liens */
-  color: inherit; /* Hériter de la couleur du texte par défaut */
-}
-
 /* Réinitialisation des éléments de formulaire */
 input,
 button,
-textarea,
 select {
   border: none; /* Supprimer les bordures par défaut */
   outline: none; /* Supprimer les contours par défaut */
@@ -56,16 +41,12 @@ button {
   cursor: pointer; /* Rendre les boutons interactifs */
 }
 
-/* Normalisation des éléments HTML pour la lisibilité */
-html {
-  font-size: 100%; /* Utilisation de la taille de police de base */
-}
-
-body {
-  line-height: 1.4; /* Assurer une bonne lisibilité du texte */
-}
-
 /* Définir des marges pour certaines sections globales */
 main {
   display: block;
+}
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+  padding: 0; 
 }

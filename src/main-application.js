@@ -26,7 +26,7 @@ export class MainApplication extends LitElement {
         id: "056a3b1b-0ce7-11ed-81fc-71bc641d1d18",
         name: "Paris",
         userName: "Morgane",
-        description: "La capitale de la France.",
+        description: "Aliqua voluptate laboris eiusmod sit occaecat. Dolor irure incididunt labor ...",
         photoUrl: "/public/assets/picture.webp",
         
       },

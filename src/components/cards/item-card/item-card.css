@@ -2,7 +2,6 @@
 .card-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
   gap: 16px;
 }
 
@@ -14,8 +13,11 @@
 }
 
 .card-header {
+  padding: 4px;
+  height: 44px;
   display: flex;
-  padding: 10px;
+  align-items: center;
+  gap: 12px;
 }
 
 .card-header .checkbox {
@@ -35,18 +37,22 @@
 }
 
 .card-content {
-  padding: 16px;
+  padding: 8px 16px 0 16px;
+  height: 183px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .description {
   font-size: 13px;
-  padding: 8px 0;
 }
 
 .meta {
+  width: 248px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  height: 32px;
 }
 
 .meta-labels,
@@ -69,4 +75,17 @@
 
 .h2 {
   font-size: 14px;
+}
+
+.avatar {
+  display: flex;
+  padding-left: 12px;
+  gap: 8px;
+  align-items: center;
+}
+
+.description, .name {
+  margin: 0;
+  height: 43.5px;
+  width: 248px;
 }/*# sourceMappingURL=item-card.css.map */

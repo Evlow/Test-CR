@@ -23,7 +23,6 @@ export class IconsComponent extends LitElement {
             <img
               src="${icon.path}"
               alt="${icon.name}"
-              class="icon"
               style="width: ${this.iconSize}; height: ${this.iconSize};"
             />
           `

@@ -24,6 +24,14 @@ class ItemCard extends LitElement {
     this.edit = new Date();
     this.avatar = "/assets/vector.svg";
     this.application = "Mon Application";
+
+    this.icons = [
+      { name: "eye", path: "/assets/eye.svg" },
+      { name: "brush", path: "/assets/brush.svg" },
+      { name: "copy", path: "/assets/copy.svg" },
+      { name: "delete", path: "/assets/delete.svg" },
+      { name: "more", path: "/assets/more.svg" },
+    ];
   }
 
   formatDate(date) {
@@ -42,8 +50,8 @@ class ItemCard extends LitElement {
             <input type="checkbox" class="checkbox" />
             <div class="avatar">
               <img src="${this.avatar}" alt="${this.userName}" />
+              <div class="username">${this.userName}</div>
             </div>
-            <div class="username">${this.userName}</div>
           </div>
 
           <!-- Card Media -->
@@ -53,7 +61,7 @@ class ItemCard extends LitElement {
 
           <!-- Card Content -->
           <div class="card-content">
-            <h2 class="name">${this.name}</h2>
+            <h2 class=name>${this.name}</h2>
             <p class="description">${this.description}</p>
             <div class="meta">
               <div class="meta-labels">
@@ -66,6 +74,7 @@ class ItemCard extends LitElement {
               </div>
             </div>
           </div>
+          <icons-component .icons="${this.icons}"></icons-component>
         </div>
       </div>
     `;
