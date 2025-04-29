@@ -1,24 +1,78 @@
-@use '@scss/abstracts/variables' as *;
+@use '../../../../src/scss/abstracts/variables' as *;
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap:16px
+}
 
 .card {
-  border: 1px solid red;
+  width: 280px;
+  height: 407px;
+  border-radius: 10px;
+  background-color: $secondary-color;
+}
+
+.card-header {
+  display: flex;
   padding: 10px;
-  width: 200px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.content img {
-  width: 100%;
-  border-radius: 4px;
+.card-header .checkbox {
+  align-self: center;
 }
 
-.title {
-  font-weight: bold;
-  margin-top: 10px;
+.card-header .icon {
+  font-size: 24px;
+  align-self: center;
 }
 
-.description {
-  font-size: 0.9rem;
-  color: #666;
+
+.card-media img {
+  width: 280px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  }
+
+
+.description{
+  font-size: $font-size-13;
+  padding: 8px 0;
+}
+
+
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-labels,
+.meta-values {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-labels {
+  color: $text-primary;
+  font-weight: $font-weight-500;
+  font-size: $font-size-12;
+}
+.meta-values {
+  color: $text-secondary;
+  font-weight: $font-weight-500;
+  font-size: $font-size-12;
+
+
+}
+
+.h2{
+  font-size: $h2;
+
 }

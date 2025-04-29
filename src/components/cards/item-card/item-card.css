@@ -1,23 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 16px;
+}
+
 .card {
-  border: 1px solid red;
+  width: 280px;
+  height: 407px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.card-header {
+  display: flex;
   padding: 10px;
-  width: 200px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.content img {
-  width: 100%;
-  border-radius: 4px;
+.card-header .checkbox {
+  align-self: center;
 }
 
-.title {
-  font-weight: bold;
-  margin-top: 10px;
+.card-header .icon {
+  font-size: 24px;
+  align-self: center;
+}
+
+.card-media img {
+  width: 280px;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
 }
 
 .description {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-labels,
+.meta-values {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-labels {
+  color: #12171b;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.meta-values {
+  color: #627184;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.h2 {
+  font-size: 14px;
 }/*# sourceMappingURL=item-card.css.map */

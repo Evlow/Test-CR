@@ -1,13 +1,7 @@
 .cards-container {
   margin-top: 100px;
   padding: 24px;
-  background-color: #f9f9f9;
   min-height: 300px;
-}
-.cards-container__title {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
-  color: #333;
 }
 .cards-container__list {
   display: flex;

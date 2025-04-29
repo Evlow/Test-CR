@@ -12,10 +12,11 @@
 /* Réinitialisation des polices par défaut */
 body {
   font-family: "Roboto", sans-serif; /* Utiliser la variable de la police */
-  font-size: 14px; /* Utiliser la taille de police de base */
+  font-size: 12px; /* Utiliser la taille de police de base */
   line-height: 1.5; /* Interligne pour la lisibilité */
   color: #12171b; /* Couleur du texte principale */
   background-color: #ecf2f6; /* Couleur de fond principale */
+  font-weight: 500;
 }
 
 /* Réinitialisation des éléments de liste */

@@ -18,7 +18,6 @@ export class CardsContainer extends LitElement {
 
   willUpdate(changedProperties) {
     if (changedProperties.has('cards')) {
-      // À chaque mise à jour de "cards", on synchronise "filteredCards"
       this.filteredCards = [...this.cards];
     }
   }
@@ -63,6 +62,8 @@ export class CardsContainer extends LitElement {
                 ${this.filteredCards.map(
                   (card) => html`
                     <item-card
+                    .key="${card.id}"
+                    .userName="${card.userName}"
                       .name="${card.name}"
                       .description="${card.description}"
                       .photoUrl="${card.photoUrl}"

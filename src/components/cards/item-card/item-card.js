@@ -1,6 +1,7 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
 import styles from "./item-card.scss" assert { type: "css" };
 import "../../icons/icons-component.js";
+
 class ItemCard extends LitElement {
   static styles = styles;
 
@@ -10,6 +11,8 @@ class ItemCard extends LitElement {
     description: { type: String },
     photoUrl: { type: String },
     edit: { type: Object },
+    avatar: { type: String },
+    application: { type: String },
   };
 
   constructor() {
@@ -19,14 +22,8 @@ class ItemCard extends LitElement {
     this.description = "Description de la carte";
     this.photoUrl = "/assets/picture.webp";
     this.edit = new Date();
-
-    this.icons = [
-      { name: "eye", path: "/assets/eye.svg" },
-      { name: "brush", path: "/assets/brush.svg" },
-      { name: "copy", path: "/assets/copy.svg" },
-      { name: "delete", path: "/assets/delete.svg" },
-      { name: "more", path: "/assets/more.svg" },
-    ];
+    this.avatar = "/assets/vector.svg";
+    this.application = "Mon Application";
   }
 
   formatDate(date) {
@@ -40,13 +37,34 @@ class ItemCard extends LitElement {
     return html`
       <div class="card-container">
         <div class="card">
-          <div class="content">
-            <img src="${this.photoUrl}" alt="${this.name}" />
-            <div class="title">${this.name}</div>
-            <div class="description">${this.description}</div>
-            <div class="edit">Modifier le ${formattedDate}</div>
+          <!-- Card Header -->
+          <div class="card-header">
+            <input type="checkbox" class="checkbox" />
+            <div class="avatar">
+              <img src="${this.avatar}" alt="${this.userName}" />
+            </div>
+            <div class="username">${this.userName}</div>
+          </div>
 
-            <icons-component .icons="${this.icons}"></icons-component>
+          <!-- Card Media -->
+          <div class="card-media">
+            <img src="${this.photoUrl}" alt="${this.name}" />
+          </div>
+
+          <!-- Card Content -->
+          <div class="card-content">
+            <h2 class="name">${this.name}</h2>
+            <p class="description">${this.description}</p>
+            <div class="meta">
+              <div class="meta-labels">
+                <span>Modifier le</span>
+                <span>Application</span>
+              </div>
+              <div class="meta-values">
+                <span>${formattedDate}</span>
+                <span>${this.application}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
