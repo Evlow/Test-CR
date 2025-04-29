@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit";
 import styles from "./header-component.scss" assert { type: "css" };
+import "../search-bar/search-bar.js"; 
 
 export class HeaderComponent extends LitElement {
   static styles = styles;
@@ -78,6 +79,15 @@ export class HeaderComponent extends LitElement {
     this.dispatchEvent(createEvent);
   }
 
+  handleSearch(query) {
+    const searchEvent = new CustomEvent("search-input", {
+      detail: { query },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(searchEvent);
+  }
+
   render() {
     return html`
       <header>
@@ -123,25 +133,10 @@ export class HeaderComponent extends LitElement {
               alt="spacer"
               class="spacer-icon-top-bar"
             />
-
-            <div class="search-bar">
-              <span class="create-text">Rechercher</span>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Nom d'une ressource"
-                  @input="${this.handleSearchInput}"
-                />
-                <button
-                  class="search-button"
-                  @click="${this.handleSearchClick}"
-                >
-                  <img
-                    src="/assets/search.svg"
-                    alt="icone recherche"
-                    class="search-icon"
-                  />
-                </button>
+            <search-bar
+              @search-input="${(e) => this.handleSearch(e.detail.query)}"
+            ></search-bar>
+           
               </div>
             </div>
           </div>
