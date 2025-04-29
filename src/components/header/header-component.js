@@ -57,27 +57,41 @@ export class HeaderComponent extends LitElement {
     },
   ];
 
-  // État pour afficher ou masquer le bouton "Créer"
-  showCreateButton = false;
+  // États pour gérer l'icône active
+  activeIcon = "home";
 
-  // Méthode pour gérer le clic sur l'icône d'accueil
-  handleHomeClick() {
-    this.showCreateButton = !this.showCreateButton;
-    this.requestUpdate(); // Force la mise à jour du composant
+  // Méthode pour gérer le clic sur une icône
+  handleIconClick(iconName) {
+    if (iconName !== this.activeIcon) {
+      this.activeIcon = iconName;
+    }
+    this.requestUpdate();
+  }
+
+  // Méthode pour gérer le clic sur le bouton "Créer"
+  handleCreateClick() {
+    const createEvent = new CustomEvent("create-card", {
+      detail: { message: "Créer une nouvelle carte" },
+      bubbles: true, // Permet à l'événement de remonter à l'élément parent
+      composed: true, // L'événement peut traverser le shadow DOM
+    });
+    this.dispatchEvent(createEvent);
   }
 
   render() {
     return html`
-     <header>
+      <header>
         <div class="left">
           <div class="top-left">
             ${this.icons
               .filter((icon) => icon.position === "left")
               .map(
                 (icon) => html`
-                  <button 
-                    class="icon-button ${this.showCreateButton ? 'active' : ''}"
-                    @click="${this.handleHomeClick}"
+                  <button
+                    class="icon-button ${this.activeIcon === icon.name
+                      ? "active"
+                      : ""}"
+                    @click="${() => this.handleIconClick(icon.name)}"
                   >
                     <img
                       src="${icon.path}"
@@ -87,64 +101,48 @@ export class HeaderComponent extends LitElement {
                   </button>
                 `
               )}
-            
-            <!-- Container principal avec classe conditionnelle -->
-            <div class="home-container ${this.showCreateButton ? "show" : ""}">
-              ${this.showCreateButton
-                ? html`
-                    <!-- Container pour Créer et Rechercher côte à côte -->
-                    <div class="create-search-container">
-                      <!-- Créer -->
-                      <div class="create-content">
-                        <span class="create-text">Créer une carte</span>
-                        <button
-                          class="create-button"
-                          @click="${this.handleCreateClick}"
-                        >
-                          <img
-                            src="/assets/button.svg"
-                            alt="icone créer"
-                            class="create-icon-img"
-                          />
-                        </button>
-                      </div>
-                      
-                      <!-- Séparateur -->
-                      <img
-                        src="/assets/spacers.svg"
-                        alt="spacer"
-                        class="spacer-icon-top-bar"
-                      />
-                      
-                      <!-- Rechercher -->
-                      <div class="search-bar">
-                        <span class="create-text">Rechercher</span>
-                        <div>
-                          <input
-                            type="text"
-                            placeholder="Nom d'une ressource"
-                            @input="${this.handleSearchInput}"
-                          />
-                          <button
-                            class="search-button"
-                            @click="${this.handleSearchClick}"
-                          >
-                            <img
-                              src="/assets/search.svg"
-                              alt="icone recherche"
-                              class="search-icon"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Barre Top en dessous -->
-                    <div class="top-bar">
-                      <span class="create-text">Top</span>
-                    </div>
-                  `
-                : ""}
+          </div>
+        </div>
+
+        <!-- Menu sous l'icône home -->
+        <div class="home-container ${this.activeIcon === "home" ? "show" : ""}">
+          <div class="create-search-container">
+            <div class="create-content">
+              <span class="create-text">Créer</span>
+              <button class="create-button" @click="${this.handleCreateClick}">
+                <img
+                  src="/assets/button.svg"
+                  alt="icone créer"
+                  class="create-icon-img"
+                />
+              </button>
+            </div>
+
+            <img
+              src="/assets/spacers.svg"
+              alt="spacer"
+              class="spacer-icon-top-bar"
+            />
+
+            <div class="search-bar">
+              <span class="create-text">Rechercher</span>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Nom d'une ressource"
+                  @input="${this.handleSearchInput}"
+                />
+                <button
+                  class="search-button"
+                  @click="${this.handleSearchClick}"
+                >
+                  <img
+                    src="/assets/search.svg"
+                    alt="icone recherche"
+                    class="search-icon"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -159,8 +157,8 @@ export class HeaderComponent extends LitElement {
                   src="${icon.path}"
                   alt="${icon.alt}"
                   class="${icon.className}"
+                  @click="${() => this.handleIconClick(icon.name)}"
                 />
-                <!-- Ajout d'un séparateur après certaines icônes -->
                 ${index < array.length - 2
                   ? html`
                       <img
