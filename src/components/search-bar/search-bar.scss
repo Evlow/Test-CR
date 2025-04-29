@@ -1,0 +1,40 @@
+/* Conteneur de la barre de recherche */
+.search-bar {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-bar > div {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .search-bar input {
+    padding: 6px 8px;
+    border-radius: 6px 0 0 6px;
+    border: 1px solid #a3b1c2;
+    border-right: none;
+    font-style: italic;
+    width: 190px;
+  }
+  
+  /* Style du bouton de recherche */
+  .search-button {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1565c0;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  
+  /* Icône dans le bouton de recherche */
+  .search-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
