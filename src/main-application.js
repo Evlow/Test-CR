@@ -32,8 +32,8 @@ export class MainApplication extends LitElement {
         userName: "Morgane",
         description:
           "Capitale de la France, Paris est célèbre pour son histoire, sa culture et sa mode.",
-        photoUrl: "/public/assets/paris.png",
-        iconClass: "my-icon-class",
+        photoUrl: "/public/assets/paris.webp",
+        avatar: "/public/assets/morgane.jpg",
         edit: "2024-12-10T14:30:00Z",
         application: "Application de Paris",
       },
@@ -43,7 +43,8 @@ export class MainApplication extends LitElement {
         userName: "Karim",
         description:
           "Ville portuaire méditerranéenne, Marseille est un mélange de cultures et d'histoire.",
-        photoUrl: "/public/assets/marseille.png",
+        photoUrl: "/public/assets/marseille.webp",
+        avatar: "/public/assets/karim.jpg",
         application: "Application de Marseille",
         edit: "2024-12-10T14:30:00Z",
       },
@@ -54,6 +55,7 @@ export class MainApplication extends LitElement {
         description:
           "Célèbre pour sa cuisine et son patrimoine historique, Lyon est un centre gastronomique.",
         photoUrl: "/public/assets/lyon.webp",
+        avatar: "/public/assets/june.jpg",
         application: "Application de Lyon",
         edit: "2024-12-10T14:30:00Z",
       },
@@ -63,7 +65,8 @@ export class MainApplication extends LitElement {
         userName: "Bernard",
         description:
           "Nice, sur la Côte d'Azur, est connue pour ses plages, son climat et sa promenade des Anglais.",
-        photoUrl: "/public/assets/nice.png",
+        photoUrl: "/public/assets/nice.webp",
+        avatar: "/public/assets/bernard.jpg",
         application: "Application de Nice",
         edit: "2024-12-10T14:30:00Z",
       },
@@ -73,7 +76,8 @@ export class MainApplication extends LitElement {
         userName: "Camille",
         description:
           "Ville rose, Toulouse est reconnue pour son architecture et son aérospatial.",
-        photoUrl: "/public/assets/toulouse.png",
+        photoUrl: "/public/assets/toulouse.webp",
+        avatar: "/public/assets/camille.jpg",
         application: "Application de Toulouse",
         edit: "2024-12-10T14:30:00Z",
       },
@@ -83,40 +87,20 @@ export class MainApplication extends LitElement {
         userName: "Kévin",
         description:
           "Bordeaux est célèbre pour son vin et son architecture classée au patrimoine mondial.",
-        photoUrl: "/public/assets/bordeaux.png",
+        photoUrl: "/public/assets/bordeaux.webp",
+        avatar: "/public/assets/kevin.jpg",
         application: "Application de Bordeaux",
         edit: "2024-12-10T14:30:00Z",
       },
       {
         id: "6e6f2b2c-0ce7-11ed-81fc-71bc641d1d18",
         name: "Lille",
-        userName: "Julie",
+        userName: "Sylvie",
         description:
           "Lille est une ville dynamique, alliant culture flamande et architecture typique du nord.",
-        photoUrl: "/public/assets/lille.png",
+        photoUrl: "/public/assets/lille.webp",
+        avatar: "/public/assets/sylvie.png",
         application: "Application de Lille",
-        edit: "2024-12-10T14:30:00Z",
-      },
-      {
-        id: "7f7g3c3d-0ce7-11ed-81fc-71bc641d1d18",
-        name: "Strasbourg",
-        userName: "Carole",
-        description:
-          "Strasbourg est célèbre pour sa cathédrale gothique et son quartier historique classé.",
-        photoUrl: "/public/assets/strasbourg.png",
-        application: "Application de Strasbourg",
-        edit: "2024-12-10T14:30:00Z",
-      },
-
-      {
-        id: "c2l8h8i2-0ce7-11ed-81fc-71bc641d1d18",
-        name: "Avignon",
-        userName: "Louis",
-        description:
-          "Avignon est connue pour son Palais des Papes et son célèbre festival de théâtre.",
-        photoUrl: "/public/assets/avignon.png",
-        iconClass: "my-icon-class",
-        application: "Application d'Avignon",
         edit: "2024-12-10T14:30:00Z",
       },
       {
@@ -125,7 +109,8 @@ export class MainApplication extends LitElement {
         userName: "Justine",
         description:
           "Cannes est une ville mondialement connue pour son festival du film et ses plages.",
-        photoUrl: "/public/assets/cannes.png",
+        photoUrl: "/public/assets/cannes.webp",
+        avatar: "/public/assets/justine.png",
         iconClass: "my-icon-class",
         application: "Application de Cannes",
         edit: "2024-12-10T14:30:00Z",
