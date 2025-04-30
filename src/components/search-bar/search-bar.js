@@ -16,7 +16,6 @@ export class SearchBar extends LitElement {
   // Fonction appelée lors de la saisie dans le champ de recherche
   handleSearchInput(event) {
     this.query = event.target.value;
-
     this.dispatchEvent(
       new CustomEvent("search-input", {
         detail: { query: this.query },
@@ -39,37 +38,38 @@ export class SearchBar extends LitElement {
 
   render() {
     return html`
-      <div class="search-bar">
-      <label for="search-input">Rechercher</label>
-      <div>
+      <form class="search-bar">
+        <label for="search-input">Rechercher</label>
+        <div>
           <input
-            id="search-input"  
+            id="search-input"
             type="text"
             placeholder="Nom d'une ressource"
             .value="${this.query}"
             @input="${this.handleSearchInput}"
-            aria-label="Rechercher une ressource" 
+            aria-label="Rechercher une ressource"
             aria-describedby="search-description"
           />
-  
+
           <span id="search-description" class="sr-only">
             Entrez le nom d'une ressource pour la rechercher
           </span>
-  
-          <button 
-            class="search-button" 
+
+          <button
+            class="search-button"
             @click="${this.handleSearchClick}"
             aria-label="Lancer la recherche"
           >
             <img
               src="/assets/search.svg"
-              alt="Icône de recherche"
+              alt=""
+              role="presentation"
               class="search-icon"
             />
           </button>
         </div>
-      </div>
+      </form>
     `;
   }
-} 
+}
 customElements.define("search-bar", SearchBar);

@@ -5,7 +5,6 @@ import "../search-bar/search-bar.js";
 export class HeaderComponent extends LitElement {
   static styles = styles;
 
-  // tableau des icônes
   icons = [
     {
       name: "home",
@@ -74,12 +73,12 @@ export class HeaderComponent extends LitElement {
   handleCreateClick() {
     const createEvent = new CustomEvent("create-card", {
       detail: { message: "Créer une nouvelle carte" },
-      bubbles: true, // Permet à l'événement de remonter à l'élément parent
-      composed: true, // L'événement peut traverser le shadow DOM
+      bubbles: true,
+      composed: true,
     });
     this.dispatchEvent(createEvent);
   }
-
+  // Méthode pour gérer la recherche
   handleSearch(event) {
     const query = event.detail.query;
     const searchEvent = new CustomEvent("search-input", {
@@ -95,7 +94,6 @@ export class HeaderComponent extends LitElement {
       <header>
         <div class="left">
           <div class="top-left">
-            <!-- Navigation pour les icônes à gauche -->
             <nav aria-label="Navigation gauche">
               ${this.icons
                 .filter((icon) => icon.position === "left")
@@ -122,7 +120,7 @@ export class HeaderComponent extends LitElement {
 
         <!-- Menu sous l'icône home -->
         <div class="home-container ${this.activeIcon === "home" ? "show" : ""}">
-          <div class="create-search-container">
+          <div class="top-content-tool">
             <div class="create-content">
               <span class="create-text">Créer</span>
               <button class="create-button" @click="${this.handleCreateClick}">
@@ -141,10 +139,10 @@ export class HeaderComponent extends LitElement {
             />
             <search-bar @search-input="${this.handleSearch}"></search-bar>
           </div>
+          <div class="top-bar"></div>
         </div>
 
         <div class="right">
-          <!-- Navigation pour les icônes à droite -->
           <nav aria-label="Navigation droite">
             ${this.icons
               .filter((icon) => icon.position === "right")

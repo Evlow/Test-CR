@@ -1,6 +1,15 @@
 .icons-container {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  margin: 0 auto;
   align-items: center;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
 }

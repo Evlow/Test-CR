@@ -26,11 +26,11 @@ class ItemCard extends LitElement {
     this.application = "Mon Application";
 
     this.icons = [
-      { name: "eye", path: "/assets/eye.svg" },
-      { name: "brush", path: "/assets/brush.svg" },
-      { name: "copy", path: "/assets/copy.svg" },
-      { name: "delete", path: "/assets/delete.svg" },
-      { name: "more", path: "/assets/more.svg" },
+      { name: "eye", path: "/assets/eye.svg", label: "Aperçu" },
+      { name: "brush", path: "/assets/brush.svg", label: "Modifier" },
+      { name: "copy", path: "/assets/copy.svg", label: "Copier" },
+      { name: "delete", path: "/assets/delete.svg", label: "Supprimer" },
+      { name: "more", path: "/assets/more.svg", label: "Plus d’options" },
     ];
   }
 
@@ -43,25 +43,26 @@ class ItemCard extends LitElement {
     const formattedDate = this.formatDate(this.edit);
 
     return html`
-      <div class="card-container">
-        <div class="card">
-          <!-- Card Header -->
+      <article class="card-container">
+        <section class="card">
+          
           <div class="card-header">
-            <input type="checkbox" class="checkbox" />
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox" />
+              <span class="sr-only">Sélectionner cette carte</span>
+            </label>
             <div class="avatar">
-              <img src="${this.avatar}" alt="${this.userName}" />
+              <img src="${this.avatar}" alt="Avatar de ${this.userName}" />
               <div class="username">${this.userName}</div>
             </div>
           </div>
 
-          <!-- Card Media -->
           <div class="card-media">
             <img src="${this.photoUrl}" alt="${this.name}" />
           </div>
 
-          <!-- Card Content -->
           <div class="card-content">
-            <h2 class=name>${this.name}</h2>
+            <h2 class="name">${this.name}</h2>
             <p class="description">${this.description}</p>
             <div class="meta">
               <div class="meta-labels">
@@ -75,8 +76,8 @@ class ItemCard extends LitElement {
             </div>
           </div>
           <icons-component .icons="${this.icons}"></icons-component>
-        </div>
-      </div>
+        </section>
+      </article>
     `;
   }
 }
