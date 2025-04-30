@@ -17,18 +17,24 @@ export class IconsComponent extends LitElement {
 
   render() {
     return html`
-      <button class="icons-container">
+      <div class="icons-container">
         ${this.icons.map(
           (icon) => html`
-            <img
-              src="${icon.path}"
-              alt="${icon.name}"
+            <button
+              type="button"
+              class="icon-button"
+              @click="${() => this.handleIconClick(icon)}"
               aria-label="${icon.label}"
-              style="width: ${this.iconSize}; height: ${this.iconSize};"
-            />
+            >
+              <img
+                src="${icon.path}"
+                alt=""
+                style="width: ${this.iconSize}; height: ${this.iconSize};"
+              />
+            </button>
           `
         )}
-      </button>
+      </div>
     `;
   }
 }
