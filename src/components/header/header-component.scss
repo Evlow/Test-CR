@@ -4,7 +4,6 @@
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   height: 40px;
   width: 100vw;
   position: relative;
@@ -69,7 +68,7 @@ nav {
 }
 
 .icon-button.active {
-  background-color: white;
+  background-color: $secondary-color;
 }
 
 /* Bouton créer */
@@ -102,16 +101,6 @@ nav {
 
 .home-container.show {
   display: block;
-}
-
-.spacer-icon,
-.spacer-icon-top-bar {
-  width: 1px;
-  height: 40px;
-}
-
-.spacer-icon-top-bar {
-  height: 78px;
 }
 
 /* Notifications */

@@ -12,6 +12,9 @@ export class SearchBar extends LitElement {
     super();
     this.query = "";
   }
+  preventSubmit(event) {
+    event.preventDefault();
+  }  
 
   // Fonction appelée lors de la saisie dans le champ de recherche
   handleSearchInput(event) {
@@ -38,7 +41,7 @@ export class SearchBar extends LitElement {
 
   render() {
     return html`
-      <form class="search-bar">
+      <form class="search-bar"  @submit="${this.preventSubmit}">
         <label for="search-input">Rechercher</label>
         <div>
           <input
@@ -56,6 +59,7 @@ export class SearchBar extends LitElement {
           </span>
 
           <button
+            type="button"
             class="search-button"
             @click="${this.handleSearchClick}"
             aria-label="Lancer la recherche"
