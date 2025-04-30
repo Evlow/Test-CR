@@ -79,7 +79,8 @@ export class HeaderComponent extends LitElement {
     this.dispatchEvent(createEvent);
   }
 
-  handleSearch(query) {
+  handleSearch(event) {
+    const query = event.detail.query;
     const searchEvent = new CustomEvent("search-input", {
       detail: { query },
       bubbles: true,
@@ -87,6 +88,7 @@ export class HeaderComponent extends LitElement {
     });
     this.dispatchEvent(searchEvent);
   }
+  
 
   render() {
     return html`
@@ -133,10 +135,8 @@ export class HeaderComponent extends LitElement {
               alt="spacer"
               class="spacer-icon-top-bar"
             />
-            <search-bar
-              @search-input="${(e) => this.handleSearch(e.detail.query)}"
-            ></search-bar>
-           
+            <search-bar @search-input="${this.handleSearch}"></search-bar>
+
               </div>
             </div>
           </div>

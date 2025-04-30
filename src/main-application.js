@@ -1,13 +1,16 @@
 import { LitElement, html } from "lit";
+// Importation des composants enfants (header et container de cartes)
 import "./components/header/header-component.js";
 import "./components/cards/cards-container/cards-container.js";
+// Importation du style global
 import "./scss/style.scss" assert { type: "css" };
 
+// Définition du composant principal
 export class MainApplication extends LitElement {
+  // Déclaration des propriétés observables
   static properties = {
     cards: { type: Array },
     allCards: { type: Array },
-    cardIndex: { type: Number },
     displayedCards: { type: Array },
   };
 
@@ -15,20 +18,21 @@ export class MainApplication extends LitElement {
     super();
     this.cards = [];
     this.allCards = [];
-    this.cardIndex = 0;
     this.displayedCards = [];
     this.initializeCards();
+    this.addCard();
   }
 
+  // Méthode pour initialiser les cartes
   initializeCards() {
     this.allCards = [
       {
         id: "056a3b1b-0ce7-11ed-81fc-71bc641d1d18",
         name: "Paris",
         userName: "Morgane",
-        description: "Aliqua voluptate laboris eiusmod sit occaecat. Dolor irure incididunt labor ...",
+        description:
+          "Aliqua voluptate laboris eiusmod sit occaecat. Dolor irure incididunt labor ...",
         photoUrl: "/public/assets/picture.webp",
-        
       },
       {
         id: "1f6b7c9a-0ce7-11ed-81fc-71bc641d1d18",
@@ -123,44 +127,60 @@ export class MainApplication extends LitElement {
       },
     ];
   }
-  getRandomIndex() {
+
+  // Retourne une carte aléatoire
+  getRandomCard() {
     return Math.floor(Math.random() * this.allCards.length);
   }
 
-  revealNextCard() {
-    const randomIndex = this.getRandomIndex();
-    const nextCard = this.allCards[randomIndex];
-    this.cards = [...this.cards, nextCard];
+  // Ajoute une carte aléatoire
+  addCard() {
+    const randomIndex = this.getRandomCard();
+    const addCard = this.allCards[randomIndex];
+    this.displayedCards = [...this.displayedCards, addCard];
+    this.cards = [...this.displayedCards];
   }
 
-
+  // Gestionnaire pour l'événement personnalisé "create-card"
   handleCreateCard() {
-    this.revealNextCard();
+    this.addCard();
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("create-card", this.handleCreateCard);
-    this.addEventListener("search-input", this.handleSearchInput);
+    this.debounceSearch = this.debounce(this.searchCards, 300);
+    this.addEventListener("search-input", (e) =>
+      this.debounceSearch(e.detail.query)
+    );
   }
 
-  // Fonction de gestion de la recherche
-  handleSearchInput(event) {
-    const query = event.detail.query.toLowerCase();
-    if (!query) {
-      this.cards = [...this.displayedCards];
-    } else {
-      this.cards = this.displayedCards.filter(
-        (card) =>
+  // Fonction pour limiter la fréquence d'éxécution
+  debounce(func, timeout = 300) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
+  }
+
+  // Effectue une recherche dans les cartes affichées
+  searchCards(query) {
+    query = query.toLowerCase().trim();
+    // Si la recherche est vide, afficher les cartes qui ont déja été ajoutées
+    this.cards = !query
+      ? [...this.displayedCards]
+      : this.displayedCards.filter((card) =>
           card.name.toLowerCase().includes(query)
-      );
-    }
+        );
   }
 
   render() {
     return html`
       <header-component></header-component>
-      <cards-container .cards="${this.cards}"></cards-container>
+      <cards-container .cards="${this.cards}"> </cards-container>
     `;
   }
 }

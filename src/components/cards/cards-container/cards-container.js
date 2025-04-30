@@ -51,8 +51,6 @@ export class CardsContainer extends LitElement {
   render() {
     return html`
       <div class="cards-container" role="region" aria-label="Liste des cartes de villes">
-        ${this.filteredCards.length > 0
-          ? html`
               <div
                 class="cards-container__list"
                 role="list"
@@ -73,17 +71,10 @@ export class CardsContainer extends LitElement {
                   `
                 )}
               </div>
-            `
-          : html`
-              <p
-                class="cards-container__empty-message"
-                role="status"
-                aria-live="polite"
-              >
-                Aucune carte disponible.
-              </p>
-            `}
-      </div>
+              </div>
+
+            
+  }}
     `;
   }
   
