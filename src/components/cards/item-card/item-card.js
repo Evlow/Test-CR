@@ -1,6 +1,7 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
 import styles from "./item-card.scss" assert { type: "css" };
 import "../../icons/icons-component.js";
+
 class ItemCard extends LitElement {
   static styles = styles;
 
@@ -10,6 +11,8 @@ class ItemCard extends LitElement {
     description: { type: String },
     photoUrl: { type: String },
     edit: { type: Object },
+    avatar: { type: String },
+    application: { type: String },
   };
 
   constructor() {
@@ -19,13 +22,15 @@ class ItemCard extends LitElement {
     this.description = "Description de la carte";
     this.photoUrl = "/assets/picture.webp";
     this.edit = new Date();
+    this.avatar = "/assets/vector.svg";
+    this.application = "Mon Application";
 
     this.icons = [
-      { name: "eye", path: "/assets/eye.svg" },
-      { name: "brush", path: "/assets/brush.svg" },
-      { name: "copy", path: "/assets/copy.svg" },
-      { name: "delete", path: "/assets/delete.svg" },
-      { name: "more", path: "/assets/more.svg" },
+      { name: "eye", path: "/assets/eye.svg", label: "Aperçu" },
+      { name: "brush", path: "/assets/brush.svg", label: "Modifier" },
+      { name: "copy", path: "/assets/copy.svg", label: "Copier" },
+      { name: "delete", path: "/assets/delete.svg", label: "Supprimer" },
+      { name: "more", path: "/assets/more.svg", label: "Plus d’options" },
     ];
   }
 
@@ -38,18 +43,41 @@ class ItemCard extends LitElement {
     const formattedDate = this.formatDate(this.edit);
 
     return html`
-      <div class="card-container">
-        <div class="card">
-          <div class="content">
-            <img src="${this.photoUrl}" alt="${this.name}" />
-            <div class="title">${this.name}</div>
-            <div class="description">${this.description}</div>
-            <div class="edit">Modifier le ${formattedDate}</div>
+      <article class="card-container">
+        <section class="card">
 
-            <icons-component .icons="${this.icons}"></icons-component>
+          <div class="card-header">
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox" />
+              <span class="sr-only">Sélectionner cette carte</span>
+            </label>
+            <div class="avatar">
+              <img src="${this.avatar}" alt="Avatar de ${this.userName}" />
+              <div class="username">${this.userName}</div>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <div class="card-media">
+            <img src="${this.photoUrl}" alt="${this.name}" loading="lazy" />
+          </div>
+
+          <div class="card-content">
+            <h2 class="name">${this.name}</h2>
+            <p class="description">${this.description}</p>
+            <div class="meta">
+              <div class="meta-labels">
+                <span>Modifié le</span>
+                <span>Application</span>
+              </div>
+              <div class="meta-values">
+                <span>${formattedDate}</span>
+                <span>${this.application}</span>
+              </div>
+            </div>
+          </div>
+          <icons-component .icons="${this.icons}"></icons-component>
+        </section>
+      </article>
     `;
   }
 }

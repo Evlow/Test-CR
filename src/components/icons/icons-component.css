@@ -4,6 +4,7 @@
   margin: 0 auto;
   align-items: center;
 }
+
 button {
   display: flex;
   align-items: center;
@@ -12,4 +13,4 @@ button {
   border: none;
   cursor: pointer;
   position: relative;
-}
+}/*# sourceMappingURL=icons-component.css.map */

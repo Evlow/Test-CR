@@ -1,40 +1,56 @@
-/* Conteneur de la barre de recherche */
+@use "../../scss/abstracts/variables" as *;
+
 .search-bar {
+  display: flex;
+  flex-direction: column;
+
+  > div {
     display: flex;
-    flex-direction: column;
-  }
-  
-  .search-bar > div {
-    display: flex;
-    align-items: center;
     margin-top: 5px;
   }
-  
-  .search-bar input {
-    padding: 6px 8px;
-    border-radius: 6px 0 0 6px;
-    border: 1px solid #a3b1c2;
-    border-right: none;
-    font-style: italic;
+
+  input {
     width: 190px;
+    padding: 6px 8px;
+    border: 1px solid $border-color;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    font-style: italic;
+    font-size: $font-size-13;
+    color: $text-primary;
+    background-color: $secondary-color;
   }
-  
-  /* Style du bouton de recherche */
+
+  label {
+    font-size: $font-size-14;
+    font-weight: $font-weight-500;
+  }
+
   .search-button {
     height: 30px;
+    padding: 6px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1565c0;
+    background-color: $button-color;
     border: none;
     border-radius: 0 6px 6px 0;
-    padding: 6px 10px;
     cursor: pointer;
+
+    .search-icon {
+      width: 16px;
+      height: 16px;
+    }
   }
-  
-  /* Icône dans le bouton de recherche */
-  .search-icon {
-    width: 16px;
-    height: 16px;
-  }
-  
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

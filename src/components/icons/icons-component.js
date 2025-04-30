@@ -6,7 +6,7 @@ export class IconsComponent extends LitElement {
 
   static properties = {
     icons: { type: Array },
-    iconSize: { type: String }, 
+    iconSize: { type: String },
   };
 
   constructor() {
@@ -17,18 +17,18 @@ export class IconsComponent extends LitElement {
 
   render() {
     return html`
-      <div class="icons-container">
+      <button class="icons-container">
         ${this.icons.map(
           (icon) => html`
             <img
               src="${icon.path}"
               alt="${icon.name}"
-              class="icon"
+              aria-label="${icon.label}"
               style="width: ${this.iconSize}; height: ${this.iconSize};"
             />
           `
         )}
-      </div>
+      </button>
     `;
   }
 }
