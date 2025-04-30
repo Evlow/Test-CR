@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Conteneur de la barre de recherche */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 .search-bar {
   display: flex;
   flex-direction: column;
@@ -7,7 +7,6 @@
 
 .search-bar > div {
   display: flex;
-  align-items: center;
   margin-top: 5px;
 }
 
@@ -37,4 +36,19 @@
 .search-icon {
   width: 16px;
   height: 16px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+label {
+  font-size: 14px;
 }/*# sourceMappingURL=search-bar.css.map */

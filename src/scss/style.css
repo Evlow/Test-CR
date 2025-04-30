@@ -1,47 +1,43 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-/* Réinitialisation des marges et des paddings */
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Utiliser le box-sizing border-box pour tous les éléments */
+  box-sizing: border-box;
 }
 
-/* Réinitialisation des polices par défaut */
 body {
-  font-family: "Roboto", sans-serif; /* Utiliser la variable de la police */
-  font-size: 12px; /* Utiliser la taille de police de base */
-  line-height: 1.5; /* Interligne pour la lisibilité */
-  color: #12171b; /* Couleur du texte principale */
-  background-color: #ecf2f6; /* Couleur de fond principale */
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #12171b;
+  background-color: #ecf2f6;
   font-weight: 500;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-/* Réinitialisation des images et des vidéos */
 img,
 picture,
 svg {
-  display: block; /* Supprimer l'espace blanc sous les images */
-  max-width: 100%; /* Rendre les images responsive */
-  height: auto; /* Garder les proportions des images */
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-/* Réinitialisation des éléments de formulaire */
 input,
 button,
 select {
-  border: none; /* Supprimer les bordures par défaut */
-  outline: none; /* Supprimer les contours par défaut */
-  background: transparent; /* Enlever les arrière-plans par défaut */
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 button {
-  cursor: pointer; /* Rendre les boutons interactifs */
+  cursor: pointer;
 }
 
-/* Définir des marges pour certaines sections globales */
 main {
   display: block;
 }
@@ -50,4 +46,15 @@ h1, h2, h3, h4, h5, h6,
 p {
   margin: 0;
   padding: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }/*# sourceMappingURL=style.css.map */

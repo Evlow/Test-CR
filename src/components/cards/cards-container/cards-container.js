@@ -1,6 +1,6 @@
-import { LitElement, html } from 'lit';
-import '../item-card/item-card';
-import styles from './cards-container.scss' assert { type: 'css' };
+import { LitElement, html } from "lit";
+import "../item-card/item-card";
+import styles from "./cards-container.scss" assert { type: "css" };
 
 export class CardsContainer extends LitElement {
   static styles = styles;
@@ -17,7 +17,7 @@ export class CardsContainer extends LitElement {
   }
 
   willUpdate(changedProperties) {
-    if (changedProperties.has('cards')) {
+    if (changedProperties.has("cards")) {
       this.filteredCards = [...this.cards];
     }
   }
@@ -40,43 +40,37 @@ export class CardsContainer extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('search-input', this.handleSearchInput);
+    this.addEventListener("search-input", this.handleSearchInput);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('search-input', this.handleSearchInput);
+    this.removeEventListener("search-input", this.handleSearchInput);
   }
 
   render() {
     return html`
-      <div class="cards-container" role="region" aria-label="Liste des cartes de villes">
-              <div
-                class="cards-container__list"
-                role="list"
-                aria-live="polite"
-                aria-relevant="additions removals"
-              >
-                ${this.filteredCards.map(
-                  (card) => html`
-                    <item-card
-                    .key="${card.id}"
-                    .userName="${card.userName}"
-                      .name="${card.name}"
-                      .description="${card.description}"
-                      .photoUrl="${card.photoUrl}"
-                      role="listitem"
-                      aria-label="${card.name}: ${card.description}"
-                    ></item-card>
-                  `
-                )}
-              </div>
-              </div>
-
-            
-  }}
+      <div
+        class="cards-container"
+        aria-label="Liste des cartes des villes"
+        aria-live="polite"
+        aria-relevant="additions removals"
+      >
+        ${this.filteredCards.map(
+          (card) => html`
+            <item-card
+              .key="${card.id}"
+              .userName="${card.userName}"
+              .name="${card.name}"
+              .description="${card.description}"
+              .photoUrl="${card.photoUrl}"
+              role="listitem"
+              aria-label="${card.name}: ${card.description}"
+            ></item-card>
+          `
+        )}
+      </div>
     `;
   }
-  
 }
-customElements.define('cards-container', CardsContainer);
+customElements.define("cards-container", CardsContainer);

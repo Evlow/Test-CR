@@ -1,16 +1,19 @@
 .cards-container {
   margin-top: 100px;
   padding: 24px;
-  min-height: 300px;
-}
-.cards-container__list {
+  height: 280px;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
-.cards-container__empty-message {
-  font-style: italic;
-  color: #888;
-  margin-top: 32px;
-  text-align: center;
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width: 769px) {
+  .cards-container {
+    flex-direction: row;
+  }
 }/*# sourceMappingURL=cards-container.css.map */

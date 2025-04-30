@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"); 
 /* Structure générale du header */
 header {
   display: flex;
@@ -10,11 +9,10 @@ header {
   position: relative;
 }
 
-/* Alignement de la section gauche (left) et droite (right) */
-.left,
-.right {
+nav {
+  gap: 8px;
   display: flex;
-  align-items: center;
+  flex-direction: row;
 }
 
 /* Container pour le contenu dans la partie gauche */
@@ -55,18 +53,23 @@ header {
   background: transparent;
   border: none;
   cursor: pointer;
+  position: relative;
 }
 
 .icon-button.active {
   background-color: white;
-  border-radius: 4px;
 }
 
 /* Icônes dans le header */
-.icon {
+.icon-home {
   width: 24px;
   height: 24px;
   padding: 8px 12px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
 
 .icon-profile {
@@ -91,7 +94,6 @@ header {
   cursor: pointer;
   display: flex;
   background-color: transparent;
-  padding: 4px 0;
 }
 
 /* Contenu du bouton Créer */
@@ -105,7 +107,6 @@ header {
 /* Texte associé aux boutons Créer et Rechercher */
 .create-text {
   font-size: 14px;
-  margin-bottom: 4px;
 }
 
 /* Icône de création */
@@ -114,49 +115,36 @@ header {
   height: 30px;
 }
 
-/* Conteneur de la barre de recherche */
-.search-bar {
-  display: flex;
-  flex-direction: column;
-}
-
-.search-bar > div {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.search-bar input {
-  padding: 6px 8px;
-  border-radius: 6px 0 0 6px;
-  border: 1px solid #a3b1c2;
-  border-right: none;
-  font-style: italic;
-  width: 190px;
-}
-
-/* Style du bouton de recherche */
-.search-button {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1565c0;
-  border: none;
-  border-radius: 0 6px 6px 0;
-  padding: 6px 10px;
-  cursor: pointer;
-}
-
-/* Icône dans le bouton de recherche */
-.search-icon {
-  width: 16px;
-  height: 16px;
-}
-
 /* Barre supérieure */
 .top-bar {
   width: 100%;
   border-top: 1px solid #c3d1e1;
   padding-bottom: 20px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 3px;
+  right: 9px;
+  background-color: #EB6200;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }/*# sourceMappingURL=header-component.css.map */

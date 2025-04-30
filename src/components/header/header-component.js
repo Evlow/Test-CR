@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit";
 import styles from "./header-component.scss" assert { type: "css" };
-import "../search-bar/search-bar.js"; 
+import "../search-bar/search-bar.js";
 
 export class HeaderComponent extends LitElement {
   static styles = styles;
@@ -10,49 +10,50 @@ export class HeaderComponent extends LitElement {
     {
       name: "home",
       path: "/assets/home.svg",
-      alt: "icone d'accueil",
+      alt: "Aller à la page d'accueil",
       position: "left",
-      className: "icon",
+      className: "icon-home",
     },
     {
       name: "star",
       path: "/assets/star.svg",
-      alt: "icone favoris",
+      alt: "Accéder aux favoris",
       position: "right",
       className: "icon",
     },
     {
       name: "settings",
       path: "/assets/settings.svg",
-      alt: "icone réglages",
+      alt: "Accéder aux paramètres",
       position: "right",
       className: "icon",
     },
     {
       name: "support",
       path: "/assets/support.svg",
-      alt: "icone aide",
+      alt: "Obtenir de l'aide",
       position: "right",
       className: "icon",
     },
     {
       name: "mail",
       path: "/assets/mail.svg",
-      alt: "icone mail",
+      alt: "Accéder à vos messages",
       position: "right",
       className: "icon",
+      mailNumber: 4,
     },
     {
       name: "notifications",
       path: "/assets/notifications.svg",
-      alt: "icone notifications",
+      alt: "Voir les notifications",
       position: "right",
       className: "icon",
     },
     {
       name: "profil",
       path: "/assets/avatar.svg",
-      alt: "icone profil",
+      alt: "Accéder à votre profil",
       position: "right",
       className: "icon-profile",
     },
@@ -88,31 +89,34 @@ export class HeaderComponent extends LitElement {
     });
     this.dispatchEvent(searchEvent);
   }
-  
 
   render() {
     return html`
       <header>
         <div class="left">
           <div class="top-left">
-            ${this.icons
-              .filter((icon) => icon.position === "left")
-              .map(
-                (icon) => html`
-                  <button
-                    class="icon-button ${this.activeIcon === icon.name
-                      ? "active"
-                      : ""}"
-                    @click="${() => this.handleIconClick(icon.name)}"
-                  >
-                    <img
-                      src="${icon.path}"
-                      alt="${icon.alt}"
-                      class="${icon.className}"
-                    />
-                  </button>
-                `
-              )}
+            <!-- Navigation pour les icônes à gauche -->
+            <nav aria-label="Navigation gauche">
+              ${this.icons
+                .filter((icon) => icon.position === "left")
+                .map(
+                  (icon) => html`
+                    <button
+                      class="icon-button ${this.activeIcon === icon.name
+                        ? "active"
+                        : ""}"
+                      @click="${() => this.handleIconClick(icon.name)}"
+                      aria-label="${icon.alt}"
+                    >
+                      <img
+                        src="${icon.path}"
+                        class="${icon.className}"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  `
+                )}
+            </nav>
           </div>
         </div>
 
@@ -124,7 +128,7 @@ export class HeaderComponent extends LitElement {
               <button class="create-button" @click="${this.handleCreateClick}">
                 <img
                   src="/assets/button.svg"
-                  alt="icone créer"
+                  alt="Créer une ressource"
                   class="create-icon-img"
                 />
               </button>
@@ -132,39 +136,52 @@ export class HeaderComponent extends LitElement {
 
             <img
               src="/assets/spacers.svg"
-              alt="spacer"
+              aria-hidden="true"
               class="spacer-icon-top-bar"
             />
             <search-bar @search-input="${this.handleSearch}"></search-bar>
-
-              </div>
-            </div>
           </div>
         </div>
 
-        <!-- Partie droite du header -->
         <div class="right">
-          ${this.icons
-            .filter((icon) => icon.position === "right")
-            .map(
-              (icon, index, array) => html`
-                <img
-                  src="${icon.path}"
-                  alt="${icon.alt}"
-                  class="${icon.className}"
-                  @click="${() => this.handleIconClick(icon.name)}"
-                />
-                ${index < array.length - 2
-                  ? html`
-                      <img
-                        src="/assets/spacers.svg"
-                        alt="spacer"
-                        class="spacer-icon"
-                      />
-                    `
-                  : ""}
-              `
-            )}
+          <!-- Navigation pour les icônes à droite -->
+          <nav aria-label="Navigation droite">
+            ${this.icons
+              .filter((icon) => icon.position === "right")
+              .map(
+                (icon, index, array) => html`
+                  <button
+                    class="icon-button ${this.activeIcon === icon.name
+                      ? "active"
+                      : ""}"
+                    aria-label="${icon.alt}"
+                  >
+                    <img
+                      src="${icon.path}"
+                      alt="${icon.alt}"
+                      class="${icon.className}"
+                      aria-hidden="true"
+                    />
+                    ${icon.name === "mail" && icon.mailNumber
+                      ? html`
+                          <div class="notification-badge">
+                            ${icon.mailNumber}
+                          </div>
+                        `
+                      : ""}
+                  </button>
+                  ${index < array.length - 2
+                    ? html`
+                        <img
+                          src="/assets/spacers.svg"
+                          aria-hidden="true"
+                          class="spacer-icon"
+                        />
+                      `
+                    : ""}
+                `
+              )}
+          </nav>
         </div>
       </header>
     `;
