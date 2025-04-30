@@ -45,7 +45,7 @@ class ItemCard extends LitElement {
     return html`
       <article class="card-container">
         <section class="card">
-          
+
           <div class="card-header">
             <label class="checkbox-label">
               <input type="checkbox" class="checkbox" />
@@ -58,7 +58,7 @@ class ItemCard extends LitElement {
           </div>
 
           <div class="card-media">
-            <img src="${this.photoUrl}" alt="${this.name}" />
+            <img src="${this.photoUrl}" alt="${this.name}" loading="lazy" />
           </div>
 
           <div class="card-content">
