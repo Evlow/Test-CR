@@ -1,22 +1,23 @@
 .cards-container {
-  margin-top: 100px;
+  margin-top: 120px;
   padding: 24px;
-  background-color: #f9f9f9;
-  min-height: 300px;
-}
-.cards-container__title {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
-  color: #333;
-}
-.cards-container__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
-.cards-container__empty-message {
-  font-style: italic;
-  color: #888;
-  margin-top: 32px;
-  text-align: center;
+.cards-container p {
+  font-size: 20px; /* Taille du texte */
+  text-align: center; /* Centrer le texte */
+  margin: 20px 0; /* Espacement autour du texte */
+}
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width: 769px) {
+  .cards-container {
+    flex-direction: row;
+  }
 }/*# sourceMappingURL=cards-container.css.map */

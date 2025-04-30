@@ -1,192 +1,188 @@
-import { LitElement, html } from 'lit';
-import './components/header/header-component.js';
-import './components/cards/cards-container/cards-container.js';
-import './scss/style.scss' assert { type: 'css' };
+import { LitElement, html } from "lit";
+// Importation des composants enfants (header et container de cartes)
+import "./components/header/header-component.js";
+import "./components/cards/cards-container/cards-container.js";
+// Importation du style global
+import "./scss/style.scss" assert { type: "css" };
 
+// Définition du composant principal
 export class MainApplication extends LitElement {
+  // Déclaration des propriétés observables
   static properties = {
     cards: { type: Array },
     allCards: { type: Array },
-    cardIndex: { type: Number },
+    displayedCards: { type: Array },
   };
 
   constructor() {
     super();
     this.cards = [];
     this.allCards = [];
-    this.cardIndex = 0;
-    this.initializeCards();       // Initialise les 15 cartes
+    this.displayedCards = [];
+    this.initializeCards();
+    this.addCard();
   }
 
-  // Initialise les cartes avec 15 villes prédéfinies
+  // Méthode pour initialiser les cartes
   initializeCards() {
     this.allCards = [
       {
-        id: "1",
-        modificationDate: "1658843778707",
-        userName: "Alice",
+        id: "056a3b1b-0ce7-11ed-81fc-71bc641d1d18",
         name: "Paris",
-        description: "La capitale de la France, célèbre pour sa culture, son art et ses monuments emblématiques comme la Tour Eiffel.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/paris.webp",
+        userName: "Morgane",
+        description:
+          "Capitale de la France, Paris est célèbre pour son histoire, sa culture et sa mode.",
+        photoUrl: "/public/assets/paris.png",
+        iconClass: "my-icon-class"
+
+
       },
       {
-        id: "2",
-        modificationDate: "1658843778708",
-        userName: "Bob",
+        id: "1f6b7c9a-0ce7-11ed-81fc-71bc641d1d18",
         name: "Marseille",
-        description: "La deuxième plus grande ville de France, célèbre pour son vieux port et sa culture méditerranéenne.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/marseille.webp",
+        userName: "Sylvie",
+        description:
+          "Ville portuaire méditerranéenne, Marseille est un mélange de cultures et d'histoire.",
+        photoUrl: "/public/assets/marseille.png",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "3",
-        modificationDate: "1658843778709",
-        userName: "Charlie",
+        id: "2a9c8d5e-0ce7-11ed-81fc-71bc641d1d18",
         name: "Lyon",
-        description: "Connue pour sa cuisine, son patrimoine historique et ses quartiers classés à l'UNESCO.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/picture.webp",
+        userName: "June",
+        description: "Célèbre pour sa cuisine et son patrimoine historique, Lyon est un centre gastronomique.",
+        photoUrl: "/public/assets/lyon.webp",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "4",
-        modificationDate: "1658843778710",
-        userName: "Diane",
+        id: "3b3d9e7f-0ce7-11ed-81fc-71bc641d1d18",
         name: "Nice",
-        description: "Située sur la Côte d'Azur, célèbre pour ses plages et son climat agréable.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/nice.webp",
+        userName: "Charles",
+        description:
+          "Nice, sur la Côte d'Azur, est connue pour ses plages, son climat et sa promenade des Anglais.",
+        photoUrl: "/public/assets/nice.png",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "5",
-        modificationDate: "1658843778711",
-        userName: "Elliot",
+        id: "4c4e0f0a-0ce7-11ed-81fc-71bc641d1d18",
         name: "Toulouse",
-        description: "La ville rose, connue pour son architecture en briques et son rôle important dans l'industrie aérospatiale.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/toulouse.webp",
+        userName: "Camille",
+        description: "Ville rose, Toulouse est reconnue pour son architecture et son aérospatial.",
+        photoUrl: "/public/assets/toulouse.png",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "6",
-        modificationDate: "1658843778712",
-        userName: "Francis",
+        id: "5d5f1a1b-0ce7-11ed-81fc-71bc641d1d18",
         name: "Bordeaux",
-        description: "Célèbre pour son vin, son architecture élégante et ses quais pittoresques.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/bordeaux.webp",
+        userName: "Kévin",
+        description: "Bordeaux est célèbre pour son vin et son architecture classée au patrimoine mondial.",
+        photoUrl: "/public/assets/bordeaux.png",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "7",
-        modificationDate: "1658843778713",
-        userName: "Grace",
+        id: "6e6f2b2c-0ce7-11ed-81fc-71bc641d1d18",
         name: "Lille",
-        description: "Une ville dynamique, connue pour sa culture flamande et sa grande place du Général-de-Gaulle.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/lille.webp",
+        userName: "Mathis",
+        description:
+          "Lille est une ville dynamique, alliant culture flamande et architecture typique du nord.",
+        photoUrl: "/public/assets/lille.png",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "8",
-        modificationDate: "1658843778714",
-        userName: "Henry",
+        id: "7f7g3c3d-0ce7-11ed-81fc-71bc641d1d18",
         name: "Strasbourg",
-        description: "Célèbre pour sa cathédrale gothique et son quartier historique, classé au patrimoine mondial de l'UNESCO.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/strasbourg.webp",
+        userName: "Carole",
+        description:
+          "Strasbourg est célèbre pour sa cathédrale gothique et son quartier historique classé.",
+        photoUrl: "/public/assets/strasbourg.png",
+        iconClass: "my-icon-class"
+
       },
+  
       {
-        id: "9",
-        modificationDate: "1658843778715",
-        userName: "Irene",
-        name: "Nantes",
-        description: "Ville portuaire et culturelle, célèbre pour ses machines géantes et son château des Ducs de Bretagne.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/nantes.webp",
-      },
-      {
-        id: "10",
-        modificationDate: "1658843778716",
-        userName: "Jack",
-        name: "Montpellier",
-        description: "Ville universitaire avec une architecture médiévale et une vie culturelle animée.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/montpellier.webp",
-      },
-      {
-        id: "11",
-        modificationDate: "1658843778717",
-        userName: "Karen",
-        name: "Rennes",
-        description: "Célèbre pour son centre historique et son rôle important dans la région Bretagne.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/rennes.webp",
-      },
-      {
-        id: "12",
-        modificationDate: "1658843778718",
-        userName: "Louis",
-        name: "Aix-en-Provence",
-        description: "Ville provençale charmante, connue pour ses marchés et son patrimoine roman.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/aix-en-provence.webp",
-      },
-      {
-        id: "13",
-        modificationDate: "1658843778719",
-        userName: "Michel",
+        id: "c2l8h8i2-0ce7-11ed-81fc-71bc641d1d18",
         name: "Avignon",
-        description: "Ville historique, connue pour son Palais des Papes et son festival de théâtre.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/avignon.webp",
+        userName: "Léa",
+        description:
+          "Avignon est connue pour son Palais des Papes et son célèbre festival de théâtre.",
+        photoUrl: "/public/assets/avignon.png",
+        iconClass: "my-icon-class"
+
       },
       {
-        id: "14",
-        modificationDate: "1658843778720",
-        userName: "Nathalie",
+        id: "d3m9i9j3-0ce7-11ed-81fc-71bc641d1d18",
         name: "Cannes",
-        description: "Célèbre pour son festival du film et ses plages de luxe.",
-        iconClass: "my-icon-class",
-        photoUrl: "/public/assets/cannes.webp",
-      },
-    ];
+        userName: "Justine",
+        description: "Cannes est une ville mondialement connue pour son festival du film et ses plages.",
+        photoUrl: "/public/assets/cannes.png",
+        iconClass: "my-icon-class"
+
+      }
+    ]
+    
   }
 
-  revealNextCard() {
-    if (this.cardIndex < this.allCards.length) {
-      const nextCard = this.allCards[this.cardIndex];
-      this.cards = [...this.cards, nextCard];
-      this.cardIndex++;
-    }
+  // Retourne une carte aléatoire
+  getRandomCard() {
+    return Math.floor(Math.random() * this.allCards.length);
   }
 
+  // Ajoute une carte aléatoire
+  addCard() {
+    const randomIndex = this.getRandomCard();
+    const addCard = this.allCards[randomIndex];
+    this.displayedCards = [...this.displayedCards, addCard];
+    this.cards = [...this.displayedCards];
+  }
+
+  // Gestionnaire pour l'événement personnalisé "create-card"
   handleCreateCard() {
-    this.revealNextCard();
+    this.addCard();
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('create-card', this.handleCreateCard);
-    this.addEventListener('search-input', this.handleSearchInput);
+    this.addEventListener("create-card", this.handleCreateCard);
+    this.debounceSearch = this.debounce(this.searchCards, 300);
+    this.addEventListener("search-input", (e) =>
+      this.debounceSearch(e.detail.query)
+    );
   }
-  
-  handleSearchInput(event) {
-    const query = event.detail.query.toLowerCase();
-    if (!query) {
-      this.cards = [...this.allCards];  
-    } else {
-      this.cards = this.allCards.filter(
-        (card) =>
-          card.name.toLowerCase().includes(query) ||
-          card.description.toLowerCase().includes(query)
-      );
-    }
+
+  // Fonction pour limiter la fréquence d'éxécution
+  debounce(func, timeout = 300) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
   }
-  
+
+  // Effectue une recherche dans les cartes affichées
+  searchCards(query) {
+    query = query.toLowerCase().trim();
+    // Si la recherche est vide, afficher les cartes qui ont déja été ajoutées
+    this.cards = !query
+      ? [...this.displayedCards]
+      : this.displayedCards.filter((card) =>
+          card.name.toLowerCase().includes(query)
+        );
+  }
+
   render() {
     return html`
       <header-component></header-component>
-      <cards-container .cards="${this.cards}"></cards-container>
+      <cards-container .cards="${this.cards}"> </cards-container>
     `;
   }
 }
 
-customElements.define('main-application', MainApplication);
+customElements.define("main-application", MainApplication);
