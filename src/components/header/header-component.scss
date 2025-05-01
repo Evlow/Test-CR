@@ -9,21 +9,9 @@ header {
   position: relative;
 }
 
-.top-bar {
-  height: 32px;
-}
 
 .top-left {
   position: relative;
-}
-
-.top-content-tool {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 78px;
-  padding-left: 24px;
-  border-bottom: 1px solid $border-color;
 }
 
 nav {
@@ -50,10 +38,7 @@ nav {
   padding: 8px 12px;
 }
 
-.create-icon-img {
-  width: 30px;
-  height: 30px;
-}
+
 
 /* Boutons */
 .icon-button,
