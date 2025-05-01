@@ -1,0 +1,18 @@
+@use "../../../scss/abstracts/variables" as *;
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 44px;
+    padding: 4px;
+  
+    .checkbox {
+      align-self: center;
+    }
+  
+    .icon {
+      font-size: 24px;
+      align-self: center;
+    }
+  }

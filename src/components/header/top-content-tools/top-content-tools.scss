@@ -1,0 +1,47 @@
+@use "../../../scss/abstracts/variables" as *;
+
+.top-content-tool {
+  display: flex;
+  gap: 16px;
+  height: 78px;
+padding: 8px 0 0px 24px  ;  
+  border-bottom: 1px solid $border-color;
+}
+
+.create-icon-img {
+  width: 30px;
+  height: 30px;
+}
+
+.create-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.create-text {
+  font-size: $font-size-14;
+}
+
+.create-button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-button,
+.create-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-button.active {
+  background-color: $secondary-color;
+}

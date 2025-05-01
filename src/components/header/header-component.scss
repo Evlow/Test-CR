@@ -1,6 +1,4 @@
 @use "../../scss/abstracts/variables" as *;
-
-/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -9,86 +7,17 @@ header {
   position: relative;
 }
 
-.top-bar {
-  height: 32px;
-}
-
-.top-left {
-  position: relative;
-}
-
-.top-content-tool {
+.left {
   display: flex;
   align-items: center;
-  gap: 16px;
-  height: 78px;
-  padding-left: 24px;
-  border-bottom: 1px solid $border-color;
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-
-/* Icônes */
-.icon,
-.icon-home,
-.icon-profile,
-.create-icon-img {
-  width: 24px;
-  height: 24px;
-}
-
-.icon-profile {
-  width: 40px;
-  height: 40px;
-}
-
-.icon-home {
-  padding: 8px 12px;
-}
-
-.create-icon-img {
-  width: 30px;
-  height: 30px;
-}
-
-/* Boutons */
-.icon-button,
-.create-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  position: relative;
-}
-
-.icon-button.active {
   background-color: $secondary-color;
 }
 
-/* Bouton créer */
-.create-button {
+.right {
   display: flex;
-  background-color: transparent;
-}
-
-.create-content {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
 }
 
-.create-text {
-  font-size: $font-size-14;
-}
-
-/* Conteneur home */
 .home-container {
   display: none;
   position: absolute;
@@ -102,33 +31,6 @@ nav {
 .home-container.show {
   display: block;
 }
-
-/* Notifications */
-.notification-badge {
-  position: absolute;
-  top: 3px;
-  right: -2px;
-  background-color: #eb6200;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  z-index: 10;
-}
-
-/* Accessibilité */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-  white-space: nowrap;
+.icon-button.active {
+  background-color: $secondary-color;
 }
