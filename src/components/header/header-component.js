@@ -30,7 +30,6 @@ export class HeaderComponent extends LitElement {
           <top-tools></top-tools> 
         </div>
 
-        <!-- Partie droite (avec les icônes du menu) -->
         <div class="right">
           <header-menu></header-menu> 
         </div>
