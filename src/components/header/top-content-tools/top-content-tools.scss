@@ -2,10 +2,9 @@
 
 .top-content-tool {
   display: flex;
-  align-items: center;
   gap: 16px;
   height: 78px;
-  padding-left: 24px;
+padding: 8px 0 0px 24px  ;  
   border-bottom: 1px solid $border-color;
 }
 
@@ -13,6 +12,7 @@
   width: 30px;
   height: 30px;
 }
+
 .create-content {
   display: flex;
   flex-direction: column;
@@ -29,4 +29,19 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.icon-button,
+.create-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-button.active {
+  background-color: $secondary-color;
 }
