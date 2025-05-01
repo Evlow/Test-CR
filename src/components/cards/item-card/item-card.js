@@ -1,6 +1,10 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
 import styles from "./item-card.scss" assert { type: "css" };
-import "../../icons/icons-component.js";
+import "../card-header/card-header.js";
+import "../card-media/card-media.js";
+import "../card-content/card-content.js";
+import "../card-footer/card-footer.js";
+
 
 class ItemCard extends LitElement {
   static styles = styles;
@@ -21,49 +25,16 @@ class ItemCard extends LitElement {
     ];
   }
 
-  formatDate(date) {
-    if (!date) return "";
-    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-    return new Intl.DateTimeFormat("fr-FR", options).format(new Date(date));
-  }
-
   render() {
-    const { name, userName, description, photoUrl, edit, application, avatar } =
-      this.card;
+    const { name, userName, description, photoUrl, edit, application, avatar } = this.card;
 
     return html`
       <article class="card-container">
         <section class="card">
-          <div class="card-header">
-            <label class="checkbox-label">
-              <input type="checkbox" class="checkbox" />
-              <span class="sr-only">Sélectionner cette carte</span>
-            </label>
-            <div class="avatar">
-              <img src="${avatar}" alt="Avatar de ${userName}" />
-              <h1 class="username">${userName}</h1>
-            </div>
-          </div>
-
-          <div class="card-media">
-            <img src="${photoUrl}" alt="${name}" loading="lazy" />
-          </div>
-
-          <div class="card-content">
-            <h2 class="name">${name}</h2>
-            <p class="description">${description}</p>
-            <div class="meta">
-              <div class="meta-labels">
-                <span>Modifié le</span>
-                <span>Application</span>
-              </div>
-              <div class="meta-values">
-                <span>${this.formatDate(edit)}</span>
-                <span>${application}</span>
-              </div>
-            </div>
-          </div>
-          <icons-component .icons="${this.icons}"></icons-component>
+          <card-header .userName="${userName}" .avatar="${avatar}"></card-header>
+          <card-media .photoUrl="${photoUrl}" .name="${name}"></card-media>
+          <card-content .name="${name}" .description="${description}" .edit="${edit}" .application="${application}"></card-content>
+          <card-footer .icons="${this.icons}"></card-footer>
         </section>
       </article>
     `;
