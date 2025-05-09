@@ -1,8 +1,11 @@
 # Utiliser une image de Node.js
-FROM node:16-alpine as build
+FROM node:18-alpine as build
 
 # Créer un dossier de travail
 WORKDIR /app
+
+# Ajouter la variable d'environnement pour résoudre le problème crypto
+ENV NODE_OPTIONS=--experimental-global-webcrypto
 
 # Copier les fichiers package.json et package-lock.json
 COPY package*.json ./
