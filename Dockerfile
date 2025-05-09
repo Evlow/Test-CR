@@ -1,35 +1,29 @@
-# Étape 1 : Build avec Node + Vite
-FROM node:18-alpine AS build
+# Utiliser une image de Node.js
+FROM node:16-alpine as build
 
-# Dossier de travail dans le conteneur
+# Créer un dossier de travail
 WORKDIR /app
 
-# Copie des fichiers de config
+# Copier les fichiers package.json et package-lock.json
 COPY package*.json ./
 
-# Installation des dépendances
+# Installer les dépendances
 RUN npm install
 
-# Copie du code source
+# Copier tous les fichiers de l'application
 COPY . .
 
-# Build de l'application
+# Exécuter la commande de build pour préparer l'application
 RUN npm run build
 
-# Étape 2 : Serveur statique avec Nginx
+# Utiliser Nginx pour servir le build
 FROM nginx:alpine
 
-# Supprime la conf par défaut
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Copie la conf personnalisée
+# Copier la configuration nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copie les fichiers du build dans le dossier web de Nginx
+# Copier les fichiers de build depuis l'étape précédente dans le conteneur Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose le port
+# Exposer le port 80
 EXPOSE 80
-
-# Lance nginx en mode foreground
-CMD ["nginx", "-g", "daemon off;"]
