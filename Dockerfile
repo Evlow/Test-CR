@@ -1,28 +1,28 @@
-# Étape 1 : Construire l'application avec Node.js
+# Utiliser une image de Node.js
 FROM node:16-alpine as build
 
-# Définir le répertoire de travail
+# Créer un dossier de travail
 WORKDIR /app
 
-# Copier les fichiers de configuration
+# Copier les fichiers package.json et package-lock.json
 COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install
 
-# Copier tous les fichiers du projet
+# Copier tous les fichiers de l'application
 COPY . .
 
-# Construire l'application
+# Exécuter la commande de build pour préparer l'application
 RUN npm run build
 
-# Étape 2 : Utiliser Nginx pour servir l'application
+# Utiliser Nginx pour servir le build
 FROM nginx:alpine
 
 # Copier la configuration nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copier les fichiers de build de l'étape précédente vers Nginx
+# Copier les fichiers de build depuis l'étape précédente dans le conteneur Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Exposer le port 80
